@@ -100,6 +100,7 @@ public class DoctorService {
     }
 
     public void deleteDoctor(int doctorId){
-
+        Doctor removedDoctor=doctorList.remove(doctorId);
+        System.out.println("removed doctor: "+removedDoctor);
     }
 }
