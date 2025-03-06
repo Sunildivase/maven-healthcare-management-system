@@ -36,9 +36,9 @@ public class DoctorController {
                     doctorService.viewDoctor();
                     break;
 
-//                case 3:
-//                    doctorService.deleteDoctor(1);
-//                    break;
+                case 3:
+                    doctorService.deleteDoctor(1);
+                    break;
 
                 default:
                     System.out.println("please enter valid option");

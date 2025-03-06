@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.controller.DepartmentController;
 import org.example.controller.DoctorController;
 import org.example.controller.HospitalController;
 import org.example.controller.PersonController;
@@ -55,6 +56,8 @@ public class HealthcareApp {
                     break;
 
                 case 4:
+                    DepartmentController departmentController = new DepartmentController();
+                    departmentController.run();
                     System.out.println("department created successfully");
                     break;
 

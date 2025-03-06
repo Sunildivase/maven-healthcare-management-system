@@ -38,9 +38,9 @@ public class PersonController {
                     personService.viewPerson();
                     break;
 
-//                case 3:
-//                    personService.deletePerson(1);
-//                    break;
+                case 3:
+                    personService.deletePerson(1);
+                    break;
             }
 
         } while (option != 0);

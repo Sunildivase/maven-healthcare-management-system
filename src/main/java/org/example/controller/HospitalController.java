@@ -35,9 +35,9 @@ public class HospitalController {
                     hospitalService.viewHospital();
                     break;
 
-//                case 3:
-//                    hospitalService.deleteHospital(1);
-//                    break;
+                case 3:
+                    hospitalService.deleteHospital(1);
+                    break;
 
                 default:
                     System.out.println("please enter valid inputs");
