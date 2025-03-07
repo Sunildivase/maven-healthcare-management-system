@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.controller.DepartmentController;
-import org.example.controller.DoctorController;
-import org.example.controller.HospitalController;
-import org.example.controller.PersonController;
+import org.example.controller.*;
 import org.example.exception.InvalidContact;
 import org.example.service.PersonService;
 
@@ -62,10 +59,14 @@ public class HealthcareApp {
                     break;
 
                 case 5:
+                    AppointmentController appointmentController = new AppointmentController();
+                    appointmentController.run();
                     System.out.println("appointment created successfully");
                     break;
 
                 case 6:
+                    PrescriptionController prescriptionController = new PrescriptionController();
+                    prescriptionController.run();
                     System.out.println("prescription created successfully");
                     break;
 

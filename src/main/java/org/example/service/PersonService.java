@@ -23,7 +23,7 @@ public class PersonService {
 
     // method for add person
 
-    public void addPerson() throws org.example.exception.NumberFormatException {
+    public Person addPerson() throws org.example.exception.NumberFormatException {
         System.out.println("please enter id");
         int personId = 0;
         try {
@@ -104,6 +104,7 @@ public class PersonService {
         person.setAddress(address);
 
         personList.add(person);
+        return person;
     }
 
     // method for display person
