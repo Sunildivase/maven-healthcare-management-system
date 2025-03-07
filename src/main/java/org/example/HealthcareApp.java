@@ -71,6 +71,8 @@ public class HealthcareApp {
                     break;
 
                 case 7:
+                    BillingController billingController = new BillingController();
+                    billingController.run();
                     System.out.println("bill generated successfully");
                     break;
 
