@@ -71,6 +71,7 @@ public class DepartmentService {
         for(Map.Entry<Integer,Department> departmentEntry: entrySet){
             System.out.println("key: "+departmentEntry.getKey()+" "+"value: "+departmentEntry.getValue());
         }
+
     }
 
 //    public void updateDepartment(int deptId,String deptName){
