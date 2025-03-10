@@ -3,8 +3,13 @@ package com.healthcareDemo.model;
 
 import lombok.*;
 
+<<<<<<< HEAD
 @Getter
 @Setter
+=======
+@Setter
+@Getter
+>>>>>>> e1fd95223a6fd2fb91490519c8957052054ae887
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
