@@ -1,14 +1,13 @@
 package com.healthcareDemo.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Setter
 @Getter
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Appointment {
     private int appointmentId;

@@ -1,14 +1,13 @@
 package com.healthcareDemo.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Prescription {
     private int prescriptionId;
