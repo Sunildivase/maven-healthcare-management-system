@@ -1,4 +1,4 @@
-package com.healthcareDemo.service;
+package com.healthcareDemo.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
