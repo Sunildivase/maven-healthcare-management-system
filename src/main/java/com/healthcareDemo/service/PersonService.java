@@ -3,16 +3,15 @@ package com.healthcareDemo.service;
 import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.model.Person;
 import com.healthcareDemo.repository.PersonRepository;
-import lombok.Getter;
-import lombok.Setter;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class PersonService {
 
-    private PersonRepository personRepository = new PersonRepository();
+    private final PersonRepository personRepository = new PersonRepository();
 
     // scanner created for taking the input value to system
 
@@ -29,7 +28,7 @@ public class PersonService {
 
     // method for add person
 
-    public Person addPerson() throws com.healthcareDemo.exception.NumberFormatException {
+    public boolean addPerson() throws com.healthcareDemo.exception.NumberFormatException, SQLException {
         System.out.println("please enter id");
         int personId = 0;
         try {
@@ -77,7 +76,7 @@ public class PersonService {
 
         if (contactNo != 10) {
 
-        }else{
+        } else {
             throw new InvalidContact("please enter 10 digit number");
         }
 
@@ -91,7 +90,7 @@ public class PersonService {
 
         if (alternateMobile != 10) {
 
-        }else{
+        } else {
             throw new InvalidContact("please enter 10 digit number");
         }
 
@@ -109,20 +108,18 @@ public class PersonService {
         person.setAlternateMobile(alternateMobile);
         person.setAddress(address);
 
-        personRepository.addPerson(person);
-        personRepository.viewPerson(person);
-        personRepository.deletePerson(person);
+        System.out.println("person inserted successfully!!!");
+        return personRepository.addPerson(person);
 
-        personList.add(person);
-        return person;
     }
 
     // method for display person
 
-    public void viewPerson() {
-        for (Person person : personList) {
-            System.out.println("person list: " + person);
-        }
+    public void viewPerson()  {
+
+        Person person = new Person();
+        personRepository.viewPerson(person);
+
 
         // if we want to give some discount or filter records by using stream()
         // we need to convert class to record
@@ -137,11 +134,22 @@ public class PersonService {
 
     // method for delete or remove person
 
-    public void deletePerson(int personId) {
+    public Boolean deletePerson(int personId) throws SQLException {
 
-        Person removedPerson = personList.remove(personId);
-        System.out.println("removed Person" + removedPerson);
+        Person person = new Person();
+        personRepository.deletePerson(personId);
 
+        try{
+            if(personRepository.deletePerson(personId)){
+                System.out.println("person deleted successfully");
+            }else{
+                System.out.println("person not deleted");
+            }
+
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+        return false;
     }
 
 }

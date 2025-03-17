@@ -1,10 +1,11 @@
-package com.healthcareDemo.connection;
+package com.healthcareDemo.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionService {
+
     public Connection getConnection() {
         Connection connection = null;
         try {

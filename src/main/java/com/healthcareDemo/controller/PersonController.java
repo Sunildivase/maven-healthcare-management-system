@@ -4,13 +4,14 @@ import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.exception.NumberFormatException;
 import com.healthcareDemo.service.PersonService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PersonController {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public void run() throws NumberFormatException {
+    public void run() throws NumberFormatException, SQLException {
 
         int option = 0;
 
@@ -28,7 +29,7 @@ public class PersonController {
                 case 1:
                     try {
                         personService.addPerson();
-                    } catch (NumberFormatException | InvalidContact e) {
+                    } catch (NumberFormatException | InvalidContact |SQLException e) {
                         System.err.println(e.getMessage());
                     }
 

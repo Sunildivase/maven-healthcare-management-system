@@ -3,6 +3,7 @@ package com.healthcareDemo;
 import com.healthcareDemo.controller.*;
 import com.healthcareDemo.model.Person;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 
@@ -10,7 +11,7 @@ public class HealthcareApp {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws com.healthcareDemo.exception.NumberFormatException {
+    public static void main(String[] args) throws com.healthcareDemo.exception.NumberFormatException, SQLException {
 
         int option = 0;
         do {

@@ -18,4 +18,6 @@ public class Person {
     private Long contactNo;
     private Long alternateMobile;
     private String address;
+
+
 }
