@@ -134,13 +134,13 @@ public class PersonService {
 
     // method for delete or remove person
 
-    public Boolean deletePerson(int personId) throws SQLException {
+    public void deletePerson(int personId) throws SQLException {
 
         Person person = new Person();
-        personRepository.deletePerson(personId);
+        personRepository.deletePerson(person.getPersonId());
 
         try{
-            if(personRepository.deletePerson(personId)){
+            if(personRepository.deletePerson(person.getPersonId())){
                 System.out.println("person deleted successfully");
             }else{
                 System.out.println("person not deleted");
@@ -149,7 +149,7 @@ public class PersonService {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        return false;
+
     }
 
 }

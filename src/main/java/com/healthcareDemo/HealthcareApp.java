@@ -1,7 +1,6 @@
 package com.healthcareDemo;
 
 import com.healthcareDemo.controller.*;
-import com.healthcareDemo.model.Person;
 
 import java.sql.SQLException;
 import java.util.Scanner;

@@ -3,7 +3,9 @@ package com.healthcareDemo.service;
 import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.exception.InvalidExperienceException;
 import com.healthcareDemo.model.Doctor;
+import com.healthcareDemo.repository.DoctorRepository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +13,8 @@ import java.util.Scanner;
 public class DoctorService {
 
     private static Scanner scanner = new Scanner(System.in);
+
+    DoctorRepository doctorRepository = new DoctorRepository();
 
     List<Doctor> doctorList = new ArrayList<>();
 
@@ -89,18 +93,19 @@ public class DoctorService {
         doctor.setSpeciality(speciality);
         doctor.setExperience(experience);
 
-        doctorList.add(doctor);
+        System.out.println("doctor inserted successfully");
+
+        doctorRepository.addDoctor(doctor);
 
     }
 
     public void viewDoctor(){
         for(Doctor doctor: doctorList){
-            System.out.println("doctor list: "+doctor);
+            doctorRepository.viewDoctor(doctor);
         }
     }
 
     public void deleteDoctor(int doctorId){
-        Doctor removedDoctor=doctorList.remove(doctorId);
-        System.out.println("removed doctor: "+removedDoctor);
+        doctorRepository.deleteDoctor(doctorId);
     }
 }
