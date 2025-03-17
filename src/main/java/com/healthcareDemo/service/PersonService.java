@@ -2,6 +2,9 @@ package com.healthcareDemo.service;
 
 import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.model.Person;
+import com.healthcareDemo.repository.PersonRepository;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.Scanner;
 
 public class PersonService {
 
+    private PersonRepository personRepository = new PersonRepository();
 
     // scanner created for taking the input value to system
 
@@ -104,6 +108,10 @@ public class PersonService {
         person.setContactNo(contactNo);
         person.setAlternateMobile(alternateMobile);
         person.setAddress(address);
+
+        personRepository.addPerson(person);
+        personRepository.viewPerson(person);
+        personRepository.deletePerson(person);
 
         personList.add(person);
         return person;

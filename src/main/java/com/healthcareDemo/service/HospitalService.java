@@ -8,6 +8,7 @@ import java.util.*;
 
 public class HospitalService {
 
+
     private static final Scanner scanner = new Scanner(System.in);
 
     List<Hospital> hospitalList = new ArrayList<>();
