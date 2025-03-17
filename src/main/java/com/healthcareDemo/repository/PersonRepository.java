@@ -85,14 +85,22 @@ public class PersonRepository {
 
     public boolean deletePerson(int personId) throws SQLException {
 
-        Person person = null;
         try{
             this.initConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("delete from person where personId= "+personId);
+            return statement.execute("delete from person where personId= "+personId);
         }catch (SQLException e){
-            System.err.println("connection is closed: "+e.getMessage());
+            throw new RuntimeException(e);
         }
-       return false;
+        finally {
+            if(connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.err.println("connection is closed: "+e.getMessage());
+                }
+            }
+        }
+
     }
 }

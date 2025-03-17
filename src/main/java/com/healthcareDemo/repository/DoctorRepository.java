@@ -73,7 +73,7 @@ public class DoctorRepository {
         try {
             this.initConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("delete from doctor where doctorId="+doctorId);
+            return statement.execute("delete from doctor where doctorId="+doctorId);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -87,6 +87,6 @@ public class DoctorRepository {
                 }
             }
         }
-        return false ;
+
     }
 }
