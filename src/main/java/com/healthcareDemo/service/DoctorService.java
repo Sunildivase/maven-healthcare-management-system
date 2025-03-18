@@ -99,13 +99,23 @@ public class DoctorService {
 
     }
 
-    public void viewDoctor(){
+    public List<Doctor> viewDoctor(){
         for(Doctor doctor: doctorList){
-            doctorRepository.viewDoctor(doctor);
+            List<Doctor> doctorList1 =doctorRepository.viewDoctor(doctor);
+            System.out.println("doctorList: "+doctorList1);
+
         }
+        return doctorList;
     }
 
-    public void deleteDoctor(int doctorId){
+    public void deleteDoctor(int doctorId) throws SQLException {
+        Doctor doctor = new Doctor();
         doctorRepository.deleteDoctor(doctorId);
+        if(doctorRepository.deleteDoctor(doctor.getDoctorId())){
+            System.out.println("doctor deleted successfully!!!");
+        }else{
+            System.out.println("something went wrong!!!");
+        }
+
     }
 }

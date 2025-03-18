@@ -3,11 +3,13 @@ package com.healthcareDemo.service;
 import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.exception.InvalidEmail;
 import com.healthcareDemo.model.Hospital;
+import com.healthcareDemo.repository.HospitalRepository;
 
 import java.util.*;
 
 public class HospitalService {
 
+    HospitalRepository hospitalRepository = new HospitalRepository();
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -17,7 +19,7 @@ public class HospitalService {
         System.out.println(hospital);
     }
 
-    public void addHospital(){
+    public boolean addHospital(){
 
         System.out.println("please enter hospital id");
         int hospitalId=0;
@@ -64,16 +66,25 @@ public class HospitalService {
 
         Hospital hospital = new Hospital(hospitalId,hospitalName,address,emailId,contactNo);
 
-        hospitalList.add(hospital);
+        if(hospitalRepository.addHospital(hospital)){
+            System.out.println("hospital inserted successfully");
+        }else{
+            System.out.println("something went wrong!!!");
+        }
+
+        return hospitalRepository.addHospital(hospital);
     }
-    public void viewHospital(){
+    public List<Hospital> viewHospital(){
 
         for(Hospital hospital: hospitalList){
-            System.out.println("hospital list: "+hospital);
+            List<Hospital> hospitalList1 = hospitalRepository.viewHospital(hospital);
+            System.out.println("hospital list: "+hospitalList1);
         }
+        return hospitalList;
     }
     public void deleteHospital(int hospitalId){
 
-        Hospital removedHospital=hospitalList.remove(hospitalId);
+        boolean removedHospital=hospitalRepository.deleteHospital(hospitalId);
+        System.out.println("removed hospital: "+removedHospital);
     }
 }

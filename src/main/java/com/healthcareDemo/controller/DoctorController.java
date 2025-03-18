@@ -4,13 +4,14 @@ import com.healthcareDemo.exception.InvalidContact;
 import com.healthcareDemo.exception.InvalidExperienceException;
 import com.healthcareDemo.service.DoctorService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DoctorController {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public void run() {
+    public void run() throws SQLException {
 
         int option = 0;
         DoctorService doctorService = new DoctorService();

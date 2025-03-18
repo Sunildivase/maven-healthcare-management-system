@@ -115,11 +115,14 @@ public class PersonService {
 
     // method for display person
 
-    public void viewPerson()  {
+    public List<Person> viewPerson()  {
 
         Person person = new Person();
-        personRepository.viewPerson(person);
+        List<Person> personList1 = personRepository.viewPerson(person);
 
+        System.out.println("persons: "+personList1);
+
+        return personList1;
 
         // if we want to give some discount or filter records by using stream()
         // we need to convert class to record
@@ -137,7 +140,6 @@ public class PersonService {
     public void deletePerson(int personId) throws SQLException {
 
         Person person = new Person();
-        personRepository.deletePerson(person.getPersonId());
 
         try{
             if(personRepository.deletePerson(person.getPersonId())){
