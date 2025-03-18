@@ -66,21 +66,20 @@ public class HospitalService {
 
         Hospital hospital = new Hospital(hospitalId,hospitalName,address,emailId,contactNo);
 
-        if(hospitalRepository.addHospital(hospital)){
+
             System.out.println("hospital inserted successfully");
-        }else{
-            System.out.println("something went wrong!!!");
-        }
+
 
         return hospitalRepository.addHospital(hospital);
     }
     public List<Hospital> viewHospital(){
 
-        for(Hospital hospital: hospitalList){
+            Hospital hospital = new Hospital();
+
             List<Hospital> hospitalList1 = hospitalRepository.viewHospital(hospital);
             System.out.println("hospital list: "+hospitalList1);
-        }
-        return hospitalList;
+
+        return hospitalList1;
     }
     public void deleteHospital(int hospitalId){
 

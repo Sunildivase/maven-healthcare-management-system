@@ -100,12 +100,14 @@ public class DoctorService {
     }
 
     public List<Doctor> viewDoctor(){
-        for(Doctor doctor: doctorList){
+
+            Doctor doctor = new Doctor();
+
             List<Doctor> doctorList1 =doctorRepository.viewDoctor(doctor);
             System.out.println("doctorList: "+doctorList1);
 
-        }
-        return doctorList;
+
+        return doctorList1;
     }
 
     public void deleteDoctor(int doctorId) throws SQLException {

@@ -36,43 +36,43 @@ public class HealthcareApp {
                 case 1:
                     PersonController personController = new PersonController();
                     personController.run();
-                    System.out.println("person created successfully");
+//                    System.out.println("person created successfully");
                     break;
 
                 case 2:
                     DoctorController doctorController = new DoctorController();
                     doctorController.run();
-                    System.out.println("doctor created successfully");
+//                    System.out.println("doctor created successfully");
                     break;
 
                 case 3:
                     HospitalController hospitalController = new HospitalController();
                     hospitalController.run();
-                    System.out.println("hospital created successfully");
+//                    System.out.println("hospital created successfully");
                     break;
 
                 case 4:
                     DepartmentController departmentController = new DepartmentController();
                     departmentController.run();
-                    System.out.println("department created successfully");
+//                    System.out.println("department created successfully");
                     break;
 
                 case 5:
                     AppointmentController appointmentController = new AppointmentController();
                     appointmentController.run();
-                    System.out.println("appointment created successfully");
+//                    System.out.println("appointment created successfully");
                     break;
 
                 case 6:
                     PrescriptionController prescriptionController = new PrescriptionController();
                     prescriptionController.run();
-                    System.out.println("prescription created successfully");
+//                    System.out.println("prescription created successfully");
                     break;
 
                 case 7:
                     BillingController billingController = new BillingController();
                     billingController.run();
-                    System.out.println("bill generated successfully");
+//                    System.out.println("bill generated successfully");
                     break;
 
                 default:

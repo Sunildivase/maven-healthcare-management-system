@@ -75,7 +75,21 @@ public class HospitalRepository {
     }
 
     public boolean deleteHospital(int hospitalId){
-
-        return false;
+        try{
+            this.initConnection();
+            Statement statement =connection.createStatement();
+            return statement.execute("delete from hospital where hospitalId="+hospitalId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            try{
+                if(connection!=null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("connection closed: "+e.getMessage());
+            }
+        }
     }
 }
