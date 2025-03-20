@@ -1,17 +1,17 @@
 package com.healthcareDemo.service;
 
 import com.healthcareDemo.model.Appointment;
+import com.healthcareDemo.repository.AppointmentRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class AppointmentService {
 
     private static final Scanner scanner = new Scanner(System.in);
 
     Map<Integer, Appointment> appointmentMap = new HashMap<>();
+
+    AppointmentRepository appointmentRepository = new AppointmentRepository();
 
     void printAppointment(Appointment appointment) {
         System.out.println(appointment);
@@ -60,15 +60,15 @@ public class AppointmentService {
 
         Appointment appointment = new Appointment(appointmentId, personId, doctorId, hospitalId, deptId);
 
-        appointmentMap.put(appointmentId, appointment);
+        appointmentRepository.addAppointment(appointment);
 
     }
 
     public void viewAppointment() {
-        Set<Map.Entry<Integer, Appointment>> entrySet = appointmentMap.entrySet();
-        for (Map.Entry<Integer, Appointment> appointmentEntry : entrySet) {
-            System.out.println("key: " + appointmentEntry.getKey() + " " + "value: " + appointmentEntry.getValue());
-        }
+
+        List<Appointment> appointmentList = appointmentRepository.viewAppointment(appointmentMap);
+
+        System.out.println("appointment: "+appointmentList);
     }
 
     public void updateAppointment(int appointmentId, int newDoctorId) {

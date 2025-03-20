@@ -79,7 +79,6 @@ public class HealthcareApp {
                     System.out.println("please enter valid input");
                     break;
 
-
             }
 
         } while (option != 0);
