@@ -3,6 +3,7 @@ package com.healthcareDemo.controller;
 import com.healthcareDemo.exception.InvalidId;
 import com.healthcareDemo.service.DepartmentService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DepartmentController {
@@ -11,7 +12,7 @@ public class DepartmentController {
 
     DepartmentService departmentService = new DepartmentService();
 
-    public void run(){
+    public void run() throws SQLException {
         int option=0;
         do {
             System.out.println("------department-information------");
@@ -29,6 +30,8 @@ public class DepartmentController {
                         departmentService.addDepartment();
                     }catch (NumberFormatException | InvalidId e){
                         System.err.println(e.getMessage());
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
                     break;
 
@@ -41,7 +44,7 @@ public class DepartmentController {
 //                    break;
 
                 case 3:
-                    departmentService.deleteDepartment(1);
+                    departmentService.deleteDepartment(2);
                     break;
 
                 default:

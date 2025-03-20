@@ -2,11 +2,10 @@ package com.healthcareDemo.service;
 
 import com.healthcareDemo.exception.InvalidId;
 import com.healthcareDemo.model.Department;
+import com.healthcareDemo.repository.DepartmentRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.*;
 
 public class DepartmentService {
 
@@ -14,11 +13,13 @@ public class DepartmentService {
 
     Map<Integer, Department> departmentMap = new HashMap<>();
 
+    DepartmentRepository departmentRepository = new DepartmentRepository();
+
     void printDepartment(Department department){
         System.out.println(department);
     }
 
-    public Department addDepartment() {
+    public Department addDepartment() throws SQLException {
 
         System.out.println("please enter dept Id");
         int deptId=0;
@@ -62,15 +63,22 @@ public class DepartmentService {
         // used constructor for optimize the code
         Department department = new Department(deptId, deptName, doctorId, hospitalId);
 
-        departmentMap.put(deptId, department);
+        System.out.println("department inserted successfully");
+
+        departmentRepository.addDepartment(department);
+
         return department;
     }
 
-    public void viewDepartment(){
-        Set<Map.Entry<Integer,Department>> entrySet = departmentMap.entrySet();
-        for(Map.Entry<Integer,Department> departmentEntry: entrySet){
-            System.out.println("key: "+departmentEntry.getKey()+" "+"value: "+departmentEntry.getValue());
-        }
+    public Department viewDepartment() throws SQLException {
+
+        Department department = new Department();
+
+        Department departmentList = departmentRepository.viewDepartment(department);
+
+        System.out.println("departments: "+departmentList);
+
+        return departmentList;
 
     }
 
@@ -78,9 +86,9 @@ public class DepartmentService {
 //
 //    }
 
-    public void deleteDepartment(int deptId){
+    public void deleteDepartment(int deptId) throws SQLException {
 
-        Department removedDepartment = departmentMap.remove(deptId);
+        boolean removedDepartment = departmentRepository.deleteDepartment(deptId);
         System.out.println("removed department: "+removedDepartment);
     }
 }
