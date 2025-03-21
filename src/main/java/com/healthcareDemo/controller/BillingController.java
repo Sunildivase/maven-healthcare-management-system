@@ -2,6 +2,7 @@ package com.healthcareDemo.controller;
 
 import com.healthcareDemo.impl.PaymentService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BillingController {
@@ -12,7 +13,7 @@ public class BillingController {
 
     PaymentService billingService = new PaymentService();
 
-    public void run(){
+    public void run() throws SQLException {
         int option=0;
         do{
             System.out.println("-------billing-information");

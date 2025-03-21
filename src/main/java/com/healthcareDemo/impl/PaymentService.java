@@ -4,6 +4,7 @@ import com.healthcareDemo.model.Billing;
 import com.healthcareDemo.repository.BillingRepository;
 import com.healthcareDemo.service.BillingService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class PaymentService implements BillingService {
     List<Billing> billings = new ArrayList<>();
 
     @Override
-    public void payment() {
+    public void payment() throws SQLException {
 
         System.out.println("please enter bill Id");
         int billId=0;
@@ -57,7 +58,7 @@ public class PaymentService implements BillingService {
 
     }
 
-    public void receipt(){
+    public void receipt() throws SQLException {
 
         Billing billing = new Billing();
 
@@ -72,7 +73,7 @@ public class PaymentService implements BillingService {
 
     }
 
-    public void deletePayment(int billId){
+    public void deletePayment(int billId) throws SQLException {
         boolean removedBilling = billingRepository.deletePayment(billId);
         System.out.println("removed bill: "+removedBilling);
     }
