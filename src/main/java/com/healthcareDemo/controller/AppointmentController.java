@@ -2,6 +2,7 @@ package com.healthcareDemo.controller;
 
 import com.healthcareDemo.service.AppointmentService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AppointmentController {
@@ -10,7 +11,7 @@ public class AppointmentController {
 
     AppointmentService appointmentService = new AppointmentService();
 
-    public void run(){
+    public void run() throws SQLException {
         int option=0;
         do {
             System.out.println("-----Appointment-information-------");
@@ -28,6 +29,8 @@ public class AppointmentController {
                         appointmentService.addAppointment();
                     }catch (NumberFormatException e){
                         System.err.println(e.getMessage());
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
                     break;
 
@@ -36,7 +39,7 @@ public class AppointmentController {
                     break;
 
                 case 3:
-                    appointmentService.updateAppointment(1,1);
+                    appointmentService.updateAppointment(5,6);
                     break;
 
                 case 4:

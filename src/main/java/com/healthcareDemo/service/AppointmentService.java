@@ -3,6 +3,7 @@ package com.healthcareDemo.service;
 import com.healthcareDemo.model.Appointment;
 import com.healthcareDemo.repository.AppointmentRepository;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class AppointmentService {
@@ -17,7 +18,7 @@ public class AppointmentService {
         System.out.println(appointment);
     }
 
-    public void addAppointment() {
+    public void addAppointment() throws SQLException {
 
         System.out.println("please enter appointmentId");
         int appointmentId = 0;
@@ -64,26 +65,34 @@ public class AppointmentService {
 
     }
 
-    public void viewAppointment() {
+    public void viewAppointment() throws SQLException {
 
-        List<Appointment> appointmentList = appointmentRepository.viewAppointment(appointmentMap);
+        Appointment appointment = new Appointment();
+
+        Appointment appointmentList = appointmentRepository.viewAppointment(appointment);
 
         System.out.println("appointment: "+appointmentList);
     }
 
-    public void updateAppointment(int appointmentId, int newDoctorId) {
-        if (appointmentMap.containsKey(appointmentId)) {
+    public void updateAppointment(int appointmentId, int newDoctorId) throws SQLException {
 
-            updateAppointment(appointmentId, newDoctorId);
+        Appointment appointment = new Appointment();
+
+        List<Appointment> appointmentList = new ArrayList<>();
+
+        if (appointmentList.contains(appointmentId)) {
+
+            appointmentRepository.updateAppointment(appointment);
 
         } else {
-            addAppointment();
+            appointmentRepository.addAppointment(appointment);
         }
 
     }
 
-    public void deleteAppointment(int appointmentId) {
-        Appointment removedAppointment = appointmentMap.remove(appointmentId);
+    public void deleteAppointment(int appointmentId) throws SQLException {
+
+        boolean removedAppointment = appointmentRepository.deleteAppointment(appointmentId);
         System.out.println("removed appointment: " + removedAppointment);
     }
 
