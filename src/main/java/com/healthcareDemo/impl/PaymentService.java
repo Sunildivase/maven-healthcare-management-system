@@ -1,6 +1,7 @@
 package com.healthcareDemo.impl;
 
 import com.healthcareDemo.model.Billing;
+import com.healthcareDemo.repository.BillingRepository;
 import com.healthcareDemo.service.BillingService;
 
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PaymentService implements BillingService {
+
+    BillingRepository billingRepository = new BillingRepository();
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -50,14 +53,19 @@ public class PaymentService implements BillingService {
 
         Billing billing = new Billing(billId,bill,totalBill,personId);
 
-        billings.add(billing);
+        billingRepository.payment(billing);
 
     }
 
     public void receipt(){
-        for(Billing billing: billings){
-            System.out.println("bill generated: "+billing);
-        }
+
+        Billing billing = new Billing();
+
+        List<Billing> billingList = new ArrayList<>();
+
+        billingRepository.receipt(billing);
+
+        System.out.println("bill generated: "+billingList);
     }
 
     public void updatePayment(int billId,int totalBill){
@@ -65,7 +73,7 @@ public class PaymentService implements BillingService {
     }
 
     public void deletePayment(int billId){
-        Billing removedBilling = billings.remove(1);
+        boolean removedBilling = billingRepository.deletePayment(billId);
         System.out.println("removed bill: "+removedBilling);
     }
 }

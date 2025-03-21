@@ -1,6 +1,7 @@
 package com.healthcareDemo.service;
 
 import com.healthcareDemo.model.Prescription;
+import com.healthcareDemo.repository.PrescriptionRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class PrescriptionService {
+
+    PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
 
     private static final Scanner scanner = new Scanner(System.in);
 
