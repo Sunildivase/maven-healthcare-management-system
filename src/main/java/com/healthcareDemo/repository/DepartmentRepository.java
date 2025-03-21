@@ -59,7 +59,7 @@ public class DepartmentRepository {
             String query = "Select * from department";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            System.out.println("departments: "+preparedStatement);
+            System.out.println("departments: "+department);
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -78,7 +78,7 @@ public class AppointmentRepository {
         String query = "select * from appointment";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
-            System.out.println("all records: "+preparedStatement);
+            System.out.println("all records: "+appointment);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -104,7 +104,7 @@ public class AppointmentRepository {
             preparedStatement.setInt(1,appointmentId);
 
 
-            System.out.println("deleted row: "+preparedStatement);
+            System.out.println("deleted row: "+appointmentId);
 
             int deletedRow = preparedStatement.executeUpdate();
 

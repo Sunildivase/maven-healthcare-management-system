@@ -3,10 +3,8 @@ package com.healthcareDemo.service;
 import com.healthcareDemo.model.Prescription;
 import com.healthcareDemo.repository.PrescriptionRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.*;
 
 public class PrescriptionService {
 
@@ -20,7 +18,7 @@ public class PrescriptionService {
         System.out.println(prescription);
     }
 
-    public void addPrescription(){
+    public void addPrescription() throws SQLException {
 
         System.out.println("please enter prescriptionId");
         int prescriptionId = Integer.parseInt(scanner.nextLine());
@@ -31,26 +29,29 @@ public class PrescriptionService {
         System.out.println("please enter personId");
         int personId = Integer.parseInt(scanner.nextLine());
 
-        Prescription prescription = new Prescription(prescriptionId,prescriptionDetails,prescriptionId);
+        Prescription prescription = new Prescription(prescriptionId,prescriptionDetails,personId);
 
-        prescriptionMap.put(prescriptionId,prescription);
+        prescriptionRepository.addPrescription(prescription);
 
     }
 
-    public void viewPrescription(){
+    public void viewPrescription() throws SQLException {
 
-        Set<Map.Entry<Integer,Prescription>> entrySet = prescriptionMap.entrySet();
-        for(Map.Entry<Integer,Prescription> prescriptionEntry : entrySet){
-            System.out.println("key: "+prescriptionEntry.getKey()+" "+"value: "+prescriptionEntry.getValue());
-        }
+        Prescription prescription = new Prescription();
+
+        List<Prescription> prescriptionList = new ArrayList<>();
+
+        prescriptionRepository.viewPrescription(prescription);
+
+        System.out.println("prescription details: "+prescriptionList);
     }
 
     public void updatePrescription(){
 
     }
-    public void deletePrescription(int prescriptionId){
+    public void deletePrescription(int prescriptionId) throws SQLException {
 
-        Prescription removedPrescription = prescriptionMap.remove(prescriptionId);
+        boolean removedPrescription = prescriptionRepository.deletePrescription(prescriptionId);
         System.out.println("removed prescription: "+removedPrescription);
 
     }

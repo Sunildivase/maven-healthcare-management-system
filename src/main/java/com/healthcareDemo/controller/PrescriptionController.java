@@ -1,16 +1,20 @@
 package com.healthcareDemo.controller;
 
+import com.healthcareDemo.model.Prescription;
 import com.healthcareDemo.service.PrescriptionService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PrescriptionController {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    Prescription prescription = new Prescription();
+
     PrescriptionService prescriptionService = new PrescriptionService();
 
-    public void run(){
+    public void run() throws SQLException {
         int option=0;
         do{
             System.out.println("-------Prescription-Information---------");
