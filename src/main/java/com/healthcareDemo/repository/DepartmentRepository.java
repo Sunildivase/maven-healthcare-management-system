@@ -5,6 +5,7 @@ import com.healthcareDemo.service.ConnectionService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,8 @@ public class DepartmentRepository {
         }
     }
 
-    List<Department> departmentList = new ArrayList<>();
+
+    private static final List<Department> departmentList = new ArrayList<>();
 
     public boolean addDepartment(Department department) throws SQLException {
         this.initConnection();
@@ -51,21 +53,29 @@ public class DepartmentRepository {
 
     }
 
-    public Department viewDepartment(Department department) throws SQLException {
+    public List<Department> viewDepartment(Department department) throws SQLException {
 
         this.initConnection();
-      ;
+
         try{
             String query = "Select * from department";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery(query);
+            while (resultSet.next()){
 
-            System.out.println("departments: "+department);
+                int deptId = resultSet.getInt("deptId");
+                String deptName = resultSet.getString("deptName");
+                int doctorId = resultSet.getInt("doctorId");
+                int hospitalId = resultSet.getInt("hospitalId");
+
+                departmentList.add(department);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return department;
+        return departmentList;
     }
 
     public boolean deleteDepartment(int deptId) throws SQLException {

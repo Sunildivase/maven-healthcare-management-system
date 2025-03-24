@@ -70,11 +70,11 @@ public class DepartmentService {
         return department;
     }
 
-    public Department viewDepartment() throws SQLException {
+    public List<Department> viewDepartment() throws SQLException {
 
         Department department = new Department();
 
-        Department departmentList = departmentRepository.viewDepartment(department);
+        List<Department> departmentList =departmentRepository.viewDepartment(department);
 
         System.out.println("departments: "+departmentList);
 

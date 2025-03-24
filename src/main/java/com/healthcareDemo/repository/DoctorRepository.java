@@ -51,6 +51,14 @@ public class DoctorRepository {
             while (resultSet.next()){
                 int doctorId= resultSet.getInt("doctorId");
                 String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("lastName");
+                int age = resultSet.getInt("age");
+                String gender = resultSet.getString("gender");
+                Long contactNo =resultSet.getLong("contactNo");
+                String speciality = resultSet.getString("speciality");
+                int experience = resultSet.getInt("experience");
+
+                doctorList.add(doctor);
 
             }
         } catch (SQLException e) {

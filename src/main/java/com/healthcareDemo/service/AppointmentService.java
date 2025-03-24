@@ -65,13 +65,13 @@ public class AppointmentService {
 
     }
 
-    public void viewAppointment() throws SQLException {
+    public List<Appointment> viewAppointment() throws SQLException {
 
         Appointment appointment = new Appointment();
 
-        Appointment appointmentList = appointmentRepository.viewAppointment(appointment);
+        List<Appointment> appointmentList = appointmentRepository.viewAppointment(appointment);
 
-        System.out.println("appointment: "+appointmentList);
+        return appointmentList;
     }
 
     public void updateAppointment(int appointmentId, int newDoctorId) throws SQLException {
