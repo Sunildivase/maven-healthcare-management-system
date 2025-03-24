@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Doctor form</title>
 </head>
+
+<link rel="stylesheet" href="doctorInsert.css">
 <body>
 
+<h1>Doctor Information Form</h1>
+
+<form action="doctor-insert.html" method="get">
+    <label for="firstName">FirstName:</label>
+    <input type="text" name="firstName" id="firstName" placeholder="firstName"><br><br>
+
+    <label for="lastName">LastName:</label>
+    <input type="text" name="lastName" id="lastName" placeholder="lastName"> <br><br>
+
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" placeholder="age"> <br><br>
+
+    <label>Gender:</label>
+    <label for="male"></label><input type="radio" id="male" name="gender">Male
+    <label for="female"></label><input type="radio" id="female" name="gender">Female
+    <label for="others"></label><input type="radio" id="others" name="gender">Others <br><br>
+
+    <label for="contactNo">ContactNo:</label>
+    <input type="number" name="contactNo" id="contactNo" placeholder="contactNo" required> <br><br>
+
+    <label for="speciality">Speciality:</label>
+    <input type="text" name="speciality" id="speciality" placeholder="speciality"> <br><br>
+
+    <label for="experience">Experience:</label>
+    <input type="number" name="experience" id="experience" placeholder="experience"> <br><br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
 </body>
 </html>

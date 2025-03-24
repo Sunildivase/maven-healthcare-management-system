@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>Person Form</title>
 </head>
+<link rel="stylesheet" href="personInsert.css">
 <body>
-<h1>Person Information</h1>
+<h1>Person Information Form</h1>
 
 <form action="person-insert.html" method="GET">
 
     <label for="type">Type:</label><select name="type" id="type">
+    <option value="select">Select</option>
         <option value="customer">Customer</option>
         <option value="patient">Patient</option>
     </select>
@@ -40,8 +42,8 @@
     <label for="address">Address:</label><textarea name="address" id="address" cols="30" rows="10"></textarea>
     <br><br>
 
-    <input type="submit" value="submit">
-    <input type="reset" value="reset">
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
 </form>
 </body>
 </html>
