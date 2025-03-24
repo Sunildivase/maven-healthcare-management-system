@@ -92,7 +92,7 @@ public class AppointmentRepository {
                 appointmentList.add(appointment);
 
             }
-            
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

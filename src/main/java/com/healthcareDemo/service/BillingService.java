@@ -58,15 +58,14 @@ public class BillingService {
 
     }
 
-    public void viewBilling() throws SQLException {
+    public List<Billing> viewBilling() throws SQLException {
 
         Billing billing = new Billing();
 
-        List<Billing> billingList = new ArrayList<>();
 
-        billingRepository.viewBilling(billing);
+        List<Billing> billingList= billingRepository.viewBilling(billing);
 
-        System.out.println("bill generated: "+billingList);
+        return billingList;
     }
 
     public void updateBilling(int billId,int totalBill){

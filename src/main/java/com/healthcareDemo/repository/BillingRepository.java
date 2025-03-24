@@ -5,6 +5,7 @@ import com.healthcareDemo.service.ConnectionService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,14 +48,21 @@ public class BillingRepository {
 
     }
 
-    public Billing viewBilling(Billing billing) throws SQLException {
+    public List<Billing> viewBilling(Billing billing) throws SQLException {
 
 
         this.initConnection();
-        String query = "select * from billing";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
-            System.out.println("all records: "+billing);
+        try{
+            String query = "select * from billing";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery(query);
+            while (resultSet.next()){
+                int billId = resultSet.getInt("billId");
+                int bill = resultSet.getInt("bill");
+                int totalBill = resultSet.getInt("totalBill");
+                int personId = resultSet.getInt("personId");
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -69,7 +77,7 @@ public class BillingRepository {
             }
         }
 
-        return billing;
+        return billingList;
     }
 
     public boolean deleteBilling(int billId) throws SQLException {

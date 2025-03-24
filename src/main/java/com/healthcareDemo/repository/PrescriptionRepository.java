@@ -5,6 +5,7 @@ import com.healthcareDemo.service.ConnectionService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,14 +50,24 @@ public class PrescriptionRepository {
 
     }
 
-    public Prescription viewPrescription(Prescription prescription) throws SQLException {
+    public List<Prescription> viewPrescription(Prescription prescription) throws SQLException {
 
 
         this.initConnection();
-        String query = "select * from prescription";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
-            System.out.println("view data: "+prescription);
+        try{
+            String query = "select * from prescription";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery(query);
+
+            while (resultSet.next()){
+                int prescriptionId = resultSet.getInt("prescriptionId");
+                String prescriptionDetails = resultSet.getString("prescriptionDetails");
+                int personId = resultSet.getInt("personId");
+
+                prescriptionList.add(prescription);
+            }
+
 
         }catch (SQLException e){
             throw new RuntimeException(e);
@@ -70,7 +81,7 @@ public class PrescriptionRepository {
                 System.err.println(e.getMessage());
             }
         }
-        return prescription;
+        return prescriptionList;
     }
 
 

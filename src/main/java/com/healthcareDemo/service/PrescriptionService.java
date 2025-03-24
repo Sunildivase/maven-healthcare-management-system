@@ -35,15 +35,13 @@ public class PrescriptionService {
 
     }
 
-    public void viewPrescription() throws SQLException {
+    public List<Prescription> viewPrescription() throws SQLException {
 
         Prescription prescription = new Prescription();
 
-        List<Prescription> prescriptionList = new ArrayList<>();
+        List<Prescription> prescriptionList =prescriptionRepository.viewPrescription(prescription);
 
-        prescriptionRepository.viewPrescription(prescription);
-
-        System.out.println("prescription details: "+prescriptionList);
+        return prescriptionList;
     }
 
     public void updatePrescription(){
