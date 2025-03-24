@@ -1,6 +1,6 @@
 package com.healthcareDemo.controller;
 
-import com.healthcareDemo.impl.PaymentService;
+import com.healthcareDemo.service.BillingService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -11,16 +11,16 @@ public class BillingController {
 
     // data hidden concept
 
-    PaymentService billingService = new PaymentService();
+    BillingService billingService = new BillingService();
 
     public void run() throws SQLException {
         int option=0;
         do{
             System.out.println("-------billing-information");
-            System.out.println("1. payment Service");
-            System.out.println("2.receipt");
-            System.out.println("3.update payment");
-            System.out.println("4. delete payment");
+            System.out.println("1. fill information of bill");
+            System.out.println("2.view billing");
+            System.out.println("3.update billing");
+            System.out.println("4. delete billing");
 
             System.out.println("please select option");
             option = Integer.parseInt(scanner.nextLine());
@@ -28,22 +28,22 @@ public class BillingController {
             switch (option){
                 case 1:
                     try {
-                        billingService.payment();
+                        billingService.addBilling();
                     }catch (NumberFormatException e){
                         System.err.println(e.getMessage());
                     }
                     break;
 
                 case 2:
-                    billingService.receipt();
+                    billingService.viewBilling();
                     break;
 
                 case 3:
-                    billingService.updatePayment(1,1500);
+                    billingService.updateBilling(1,1500);
                     break;
 
                 case 4:
-                    billingService.deletePayment(1);
+                    billingService.deleteBilling(1);
                     break;
 
                 default:

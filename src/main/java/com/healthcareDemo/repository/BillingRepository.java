@@ -21,7 +21,7 @@ public class BillingRepository {
         }
     }
 
-    public boolean payment(Billing billing) throws SQLException {
+    public boolean addBilling(Billing billing) throws SQLException {
         this.initConnection();
         String query = "insert into billing(billId,bill,totalBill,personId) values (?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -47,7 +47,7 @@ public class BillingRepository {
 
     }
 
-    public Billing receipt(Billing billing) throws SQLException {
+    public Billing viewBilling(Billing billing) throws SQLException {
 
 
         this.initConnection();
@@ -72,7 +72,7 @@ public class BillingRepository {
         return billing;
     }
 
-    public boolean deletePayment(int billId) throws SQLException {
+    public boolean deleteBilling(int billId) throws SQLException {
         this.initConnection();
         String query = "delete from billing where billId=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
