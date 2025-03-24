@@ -5,7 +5,43 @@
     <title>Person Form</title>
 </head>
 <body>
+<h1>Person Information</h1>
+
+<form action="person-insert.html" method="GET">
+
+    <label for="type">Type:</label><select name="type" id="type">
+        <option value="customer">Customer</option>
+        <option value="patient">Patient</option>
+    </select>
+    <br><br>
+
+    <label for="firstName">FirstName:</label>
+    <input type="text" id="firstName" name="firstName" placeholder="firstName"><br><br>
+
+    <label for="lastName">LastName:</label>
+    <input type="text" id="lastName" name="lastname" placeholder="lastName"> <br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" placeholder="age"> <br><br>
+
+    <label>Gender:</label>
+    <label for="male"></label><input type="radio" id="male" name="gender">Male
+    <label for="female"></label><input type="radio" id="female" name="gender">Female
+    <label for="others"></label><input type="radio" id="others" name="gender">Others <br><br>
+
+    <label for="contactNo">ContactNo:</label>
+    <input type="number" name="contactNo" id="contactNo" placeholder="contactNo" required> <br><br>
+
+    <label for="alternateMobile">AlternateMobile:</label>
+    <input type="number" name="alternateMobile" id="alternateMobile" placeholder="alternateMobile" required>
+    <br><br>
 
 
+    <label for="address">Address:</label><textarea name="address" id="address" cols="30" rows="10"></textarea>
+    <br><br>
+
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</form>
 </body>
 </html>
