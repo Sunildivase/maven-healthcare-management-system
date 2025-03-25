@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Appointment form</title>
 </head>
+
+<link rel="stylesheet" href="appointmentInsert.css">
 <body>
+
+<h1>Appointment Information</h1>
+
+<form action="appointment-insert.html" method="get">
+
+    <label for="personId">personId: </label>
+    <input type="number" name="personId" id="personId">
+    <br><br>
+
+    <label for="doctorId">doctorId</label>
+    <input type="number" name="doctorId" id="doctorId">
+    <br><br>
+
+    <label for="departmentId">departmentId: </label>
+    <input type="number" name="departmentId" id="departmentId">
+    <br><br>
+
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</form>
 
 </body>
 </html>
