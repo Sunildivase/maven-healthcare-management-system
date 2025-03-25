@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Department Form</title>
 </head>
+<link rel="stylesheet" href="departmentInsert.css">
 <body>
+
+<h1> Department Information Form</h1>
+
+<form action="department-insert.html" method="get">
+
+    <label for="departmentName">departmentName: </label>
+    <input type="text" name="departmentName" id="departmentName">
+    <br><br>
+
+    <label for="personId">personId: </label>
+    <input type="number" name="personId" id="personId">
+    <br><br>
+
+    <label for="doctorId">doctorId: </label>
+    <input type="number" name="doctorId" id="doctorId">
+    <br><br>
+
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</form>
 
 </body>
 </html>
