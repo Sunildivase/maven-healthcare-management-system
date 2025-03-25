@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Prescription Form</title>
 </head>
+<link rel="stylesheet" href="prescriptionInsert.css">
 <body>
+   <h1>Prescription Information</h1>
 
+   <form action="prescription-insert.html" method="get">
+
+       <label for="prescriptionDetails">prescriptionDetails: </label>
+       <input type="text" name="prescriptionDetails" id="prescriptionDetails">
+       <br><br>
+
+       <label for="personId">personId: </label>
+       <input type="number" name="personId" id="personId">
+       <br><br>
+
+       <input type="submit" value="submit">
+       <input type="reset" value="reset">
+   </form>
 </body>
 </html>

@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Billing Form</title>
 </head>
+<link rel="stylesheet" href="billingInsert.css">
 <body>
+ <h1>Billing Information</h1>
 
+ <form action="billing-insert.html" method="get">
+     <label for="bill">Bill:</label>
+     <input type="number" name="bill" id="bill">
+     <br><br>
+
+     <label for="totalBill">totalBill:</label>
+     <input type="number" name="totalBill" id="totalBill">
+     <br><br>
+
+     <label for="personId">personId: </label>
+     <input type="number" name="personId" id="personId">
+     <br><br>
+
+     <input type="submit" value="submit">
+     <input type="reset" value="reset">
+ </form>
 </body>
 </html>
